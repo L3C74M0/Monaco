@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file 'interfaceGUI.ui'
 #
@@ -16,36 +16,42 @@ class Ui_ventana(object):
         icon.addPixmap(QtGui.QPixmap(":/icono/img/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ventana.setWindowIcon(icon)
         ventana.setWindowOpacity(1.0)
-        self.filtroRural = QtWidgets.QPushButton(ventana)
+
+        self.filtroRural = QtWidgets.QPushButton(ventana, clicked= lambda:self.showRural())
         self.filtroRural.setGeometry(QtCore.QRect(680, 120, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.filtroRural.setFont(font)
         self.filtroRural.setObjectName("filtroRural")
-        self.filtroUrbano = QtWidgets.QPushButton(ventana)
+
+        self.filtroUrbano = QtWidgets.QPushButton(ventana, clicked= lambda:self.showUrbano())
         self.filtroUrbano.setGeometry(QtCore.QRect(680, 90, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.filtroUrbano.setFont(font)
         self.filtroUrbano.setObjectName("filtroUrbano")
-        self.graficoDeBarras = QtWidgets.QPushButton(ventana)
+
+        self.graficoDeBarras = QtWidgets.QPushButton(ventana, clicked= lambda:self.showBarras())
         self.graficoDeBarras.setGeometry(QtCore.QRect(680, 150, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.graficoDeBarras.setFont(font)
         self.graficoDeBarras.setObjectName("graficoDeBarras")
+
         self.graficoDeDispercion = QtWidgets.QPushButton(ventana)
         self.graficoDeDispercion.setGeometry(QtCore.QRect(680, 180, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.graficoDeDispercion.setFont(font)
         self.graficoDeDispercion.setObjectName("graficoDeDispercion")
+
         self.cargarMapa = QtWidgets.QPushButton(ventana)
         self.cargarMapa.setGeometry(QtCore.QRect(710, 310, 101, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.cargarMapa.setFont(font)
         self.cargarMapa.setObjectName("cargarMapa")
+
         self.graficoDeConfucion = QtWidgets.QPushButton(ventana)
         self.graficoDeConfucion.setGeometry(QtCore.QRect(680, 210, 161, 23))
         font = QtGui.QFont()
@@ -59,15 +65,44 @@ class Ui_ventana(object):
         font.setPointSize(26)
         self.title.setFont(font)
         self.title.setObjectName("title")
-        self.image = QtWidgets.QLabel(ventana)
-        self.image.setGeometry(QtCore.QRect(16, 62, 641, 451))
-        self.image.setStyleSheet("border-image: url(:/imagen/img/b4.tif);")
-        self.image.setText("")
-        self.image.setTextFormat(QtCore.Qt.AutoText)
-        self.image.setObjectName("image")
+        self.labelUrbano = QtWidgets.QLabel(ventana)
+        self.labelUrbano.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        #self.labelUrbano.setStyleSheet("border-image: url(:/imagen/img/b5.tif);")
+        self.labelUrbano.setText("")
+        self.labelUrbano.setTextFormat(QtCore.Qt.AutoText)
+        self.labelUrbano.setObjectName("labelUrbano")
+        self.labelRural = QtWidgets.QLabel(ventana)
+        self.labelRural.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        #self.labelRural.setStyleSheet("border-image: url(:/imagen/img/b4.tif);")
+        self.labelRural.setText("")
+        self.labelRural.setObjectName("labelRural")
+        self.labelBarras = QtWidgets.QLabel(ventana)
+        self.labelBarras.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        #self.labelBarras.setStyleSheet("border-image: url(:/graficoBarras/img/graficoBarras.png);")
+        self.labelBarras.setText("")
+        self.labelBarras.setObjectName("labelBarras")
 
         self.retranslateUi(ventana)
         QtCore.QMetaObject.connectSlotsByName(ventana)
+
+
+    def showRural(self):
+        self.labelUrbano.setStyleSheet(None)
+        self.labelRural.setStyleSheet(None)
+        self.labelBarras.setStyleSheet(None)
+        self.labelRural.setStyleSheet("border-image: url(:/imagen/img/b4.tif);")
+
+    def showUrbano(self):
+        self.labelUrbano.setStyleSheet(None)
+        self.labelRural.setStyleSheet(None)
+        self.labelBarras.setStyleSheet(None)
+        self.labelUrbano.setStyleSheet("border-image: url(:/imagen/img/b5.tif);")
+
+    def showBarras(self):
+        self.labelUrbano.setStyleSheet(None)
+        self.labelRural.setStyleSheet(None)
+        self.labelBarras.setStyleSheet(None)
+        self.labelBarras.setStyleSheet("border-image: url(:/graficoBarras/img/graficoBarras.png);")
 
     def retranslateUi(self, ventana):
         _translate = QtCore.QCoreApplication.translate
