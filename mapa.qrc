@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="imagen">
+    <file>img/b4.tif</file>
+  </qresource>
+</RCC>

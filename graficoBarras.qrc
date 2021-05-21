@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="graficoBarras">
+    <file>img/graficoBarras.png</file>
+  </qresource>
+</RCC>
