@@ -208,10 +208,8 @@ class visorImagenes(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        # ===================== LLAMAR WIDGETS =======================
         widget = Ui_ventana(self)
         self.setCentralWidget(widget)
-        # =============== BARRA DE ESTADO (STATUSBAR) ================
         labelVersion = QLabel(self)
         labelVersion.setText(" Vima versión beta: 1.0  ")
         self.statusBar = self.statusBar()
