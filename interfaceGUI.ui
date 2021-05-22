@@ -20,6 +20,14 @@
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(43, 43, 43);
+gridline-color: rgb(27, 27, 27);
+selection-background-color: rgb(27, 27, 27);
+selection-color: rgb(27, 27, 27);
+border-top-color: rgb(27, 27, 27);
+border-color: rgb(27, 27, 27);</string>
+  </property>
   <widget class="QPushButton" name="filtroRural">
    <property name="geometry">
     <rect>
@@ -33,6 +41,9 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
    </property>
    <property name="text">
     <string>Filtro Rural</string>
@@ -52,6 +63,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
+   </property>
    <property name="text">
     <string>Filtro Urbano</string>
    </property>
@@ -69,6 +83,9 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
    </property>
    <property name="text">
     <string>Grafico de Barras</string>
@@ -88,6 +105,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
+   </property>
    <property name="text">
     <string>Grafico de Dispersión</string>
    </property>
@@ -106,6 +126,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
+   </property>
    <property name="text">
     <string>Cargar Mapa</string>
    </property>
@@ -123,6 +146,9 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
    </property>
    <property name="text">
     <string>Grafico de Confución</string>
@@ -143,11 +169,33 @@
      <pointsize>26</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(230, 230, 230);</string>
+   </property>
    <property name="text">
     <string>Análisis Mónaco</string>
    </property>
   </widget>
-  <widget class="QLabel" name="image">
+  <widget class="QLabel" name="labelUrbano">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>62</y>
+     <width>641</width>
+     <height>451</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/imagen/img/b5.tif);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelRural">
    <property name="geometry">
     <rect>
      <x>16</x>
@@ -162,8 +210,21 @@
    <property name="text">
     <string/>
    </property>
-   <property name="textFormat">
-    <enum>Qt::AutoText</enum>
+  </widget>
+  <widget class="QLabel" name="labelBarras">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>62</y>
+     <width>641</width>
+     <height>451</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/graficoBarras/img/graficoBarras.png);</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
