@@ -23,7 +23,7 @@ class Ui_ventana(QMainWindow):
         ventana.setWindowOpacity(1.0)
         ventana.setStyleSheet("background-color: rgb(43, 43, 43);")
 
-        self.filtroRural = QtWidgets.QPushButton(ventana, clicked=lambda: self.showRural())
+        self.filtroRural = QtWidgets.QPushButton(ventana)
         self.filtroRural.setGeometry(QtCore.QRect(680, 120, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -31,7 +31,7 @@ class Ui_ventana(QMainWindow):
         self.filtroRural.setStyleSheet("color: rgb(230, 230, 230);")
         self.filtroRural.setObjectName("filtroRural")
 
-        self.filtroUrbano = QtWidgets.QPushButton(ventana, clicked=lambda: self.showUrbano())
+        self.filtroUrbano = QtWidgets.QPushButton(ventana)
         self.filtroUrbano.setGeometry(QtCore.QRect(680, 90, 161, 23))
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -50,6 +50,7 @@ class Ui_ventana(QMainWindow):
 
         self.graficoDeDispercion = QtWidgets.QPushButton(ventana)
         self.graficoDeDispercion.setGeometry(QtCore.QRect(680, 180, 161, 23))
+        self.graficoDeDispercion.clicked.connect(self.showDispercion)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.graficoDeDispercion.setFont(font)
@@ -95,37 +96,33 @@ class Ui_ventana(QMainWindow):
         self.labelRural.setText("")
         self.labelRural.setObjectName("labelRural")
 
-        self.labelBarras = QtWidgets.QLabel(ventana)
-        self.labelBarras.setGeometry(QtCore.QRect(16, 62, 641, 451))
-        self.labelBarras.setText("")
-        self.labelBarras.setObjectName("labelBarras")
-
         self.labelMapa = QtWidgets.QLabel(ventana)
         self.labelMapa.setGeometry(QtCore.QRect(16, 62, 641, 451))
         self.labelMapa.setText("")
         self.labelMapa.setObjectName("labelMapa")
 
-        self.diagram = QtWidgets.QLabel(ventana)
-        self.diagram.setGeometry(QtCore.QRect(16, 62, 641, 451))
-        self.diagram.setText("")
-        self.diagram.setObjectName("diagram")
+        self.diagramBarras = QtWidgets.QLabel(ventana)
+        self.diagramBarras.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        self.diagramBarras.setText("")
+        self.diagramBarras.setObjectName("diagram")
+
+        self.diagramDispercion = QtWidgets.QLabel(ventana)
+        self.diagramDispercion.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        self.diagramDispercion.setText("")
+        self.diagramDispercion.setObjectName("diagram")
 
         self.retranslateUi(ventana)
         QtCore.QMetaObject.connectSlotsByName(ventana)
 
-    def showRural(self):
-        self.labelRural.setStyleSheet("border-image: url(:/imagen/img/b4.tif);")
-
-    def showUrbano(self):
-        self.diagram.setVisible(False)
-        self.labelUrbano.setVisible(True)
-        print("Entro otro")
-        self.labelUrbano.setStyleSheet("border-image: url(img/b5.tif);")
+    def showDispercion(self):
+        self.diagramDispercion.setVisible(True)
+        self.diagramBarras.setVisible(False)
+        self.diagramDispercion.setStyleSheet("border-image: url(img/graficoDispercion.png);")
 
     def showBarras(self):
-        self.diagram.setVisible(True)
-        print("Entró")
-        self.diagram.setStyleSheet("border-image: url(img/graficoBarras.jpg);")
+        self.diagramBarras.setVisible(True)
+        self.diagramDispercion.setVisible(False)
+        self.diagramBarras.setStyleSheet("border-image: url(img/graficoBarras.jpg);")
 
     def retranslateUi(self, ventana):
         _translate = QtCore.QCoreApplication.translate
