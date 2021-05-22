@@ -7,20 +7,18 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
-import os
-from PyQt5.QtGui import QIcon, QFont, QPalette, QImage, QPixmap
-from PyQt5.QtCore import (Qt, QDir, QFile, QFileInfo, QPropertyAnimation, QRect,
-                          QAbstractAnimation, QTranslator, QLocale, QLibraryInfo)
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, QMessageBox,
-                             QFrame, QLabel, QFileDialog, QVBoxLayout)
+from PyQt5.QtCore import (Qt, QDir, QFileInfo)
+from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtWidgets import (QMainWindow, QMessageBox,
+                             QLabel, QFileDialog)
+
 
 class Ui_ventana(QMainWindow):
     def setupUi(self, ventana):
         ventana.setObjectName("ventana")
         ventana.resize(853, 549)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icono/img/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("./img/icon.ico"))
         ventana.setWindowIcon(icon)
         ventana.setWindowOpacity(1.0)
         ventana.setStyleSheet("background-color: rgb(43, 43, 43);")
@@ -97,7 +95,6 @@ class Ui_ventana(QMainWindow):
         self.labelRural.setText("")
         self.labelRural.setObjectName("labelRural")
 
-
         self.labelBarras = QtWidgets.QLabel(ventana)
         self.labelBarras.setGeometry(QtCore.QRect(16, 62, 641, 451))
         self.labelBarras.setText("")
@@ -108,6 +105,11 @@ class Ui_ventana(QMainWindow):
         self.labelMapa.setText("")
         self.labelMapa.setObjectName("labelMapa")
 
+        self.diagram = QtWidgets.QLabel(ventana)
+        self.diagram.setGeometry(QtCore.QRect(16, 62, 641, 451))
+        self.diagram.setText("")
+        self.diagram.setObjectName("diagram")
+
         self.retranslateUi(ventana)
         QtCore.QMetaObject.connectSlotsByName(ventana)
 
@@ -115,13 +117,15 @@ class Ui_ventana(QMainWindow):
         self.labelRural.setStyleSheet("border-image: url(:/imagen/img/b4.tif);")
 
     def showUrbano(self):
-        self.labelUrbano.setStyleSheet("border-image: url(:/imagen/img/b5.tif);")
+        self.diagram.setVisible(False)
+        self.labelUrbano.setVisible(True)
+        print("Entro otro")
+        self.labelUrbano.setStyleSheet("border-image: url(img/b5.tif);")
 
     def showBarras(self):
-        imagen = QImage("img/graficoBarras.png")
-        nombre = QFileInfo("img/graficoBarras.png").fileName()
-        #self.labelBarras.setPicture
-        #self.labelBarras.setPixmap(QtGui.QPixmap("img/graficoBarras.png"))
+        self.diagram.setVisible(True)
+        print("Entró")
+        self.diagram.setStyleSheet("border-image: url(img/graficoBarras.jpg);")
 
     def retranslateUi(self, ventana):
         _translate = QtCore.QCoreApplication.translate
@@ -144,11 +148,10 @@ class Ui_ventana(QMainWindow):
         # Mostrar imagen
         label.setPixmap(imagen)
 
-
     def Cargar(self):
         nombreImagen, _ = QFileDialog.getOpenFileName(self, "Seleccionar imagen",
                                                       QDir.currentPath(),
-                                                      "Archivos de imagen (*.jpg *.png *.ico *.bmp)")
+                                                      "Archivos de imagen (*.tif)")
 
         if nombreImagen:
             # Verificar que QLabel tiene imagen
@@ -170,7 +173,7 @@ class Ui_ventana(QMainWindow):
 
             # Obtener la ruta y el nombre de las imagenes que se encuentren en la carpeta de
             # la imagen seleccionada
-            imagenes = self.carpetaActual.entryInfoList(["*.jpg", "*.png", "*.ico", "*.bmp"],
+            imagenes = self.carpetaActual.entryInfoList(["*.tif"],
                                                         QDir.Files, QDir.Name)
             self.imagenesCarpeta = [imagen.absoluteFilePath() for imagen in imagenes]
 
@@ -187,13 +190,6 @@ class Ui_ventana(QMainWindow):
                 self.Limpiar(labelConImagen, labelMostrarImagen, imagen, nombre, posicionInternaX)
             else:
                 self.Mostrar(self.labelMapa, imagen, nombre)
-
-import bandaSobreBanda_rc
-import graficoBarras_rc
-import graficoDispercion_rc
-import icono_rc
-import mapa1_rc
-import mapa_rc
 
 
 # ====================== CLASE visorImagenes =======================
@@ -216,9 +212,9 @@ class visorImagenes(QMainWindow):
         self.statusBar.addPermanentWidget(labelVersion, 0)
 
 
-
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     ventana = QtWidgets.QDialog()
     ui = Ui_ventana()
