@@ -6,7 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtCore import (Qt, QDir, QFileInfo)
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import (QMainWindow, QMessageBox,
@@ -149,7 +150,7 @@ class Ui_ventana(QMainWindow):
         nombreImagen, _ = QFileDialog.getOpenFileName(self, "Seleccionar imagen",
                                                       QDir.currentPath(),
                                                       "Archivos de imagen (*.tif)")
-
+        '''
         if nombreImagen:
             # Verificar que QLabel tiene imagen
             labelConImagen = ""
@@ -187,7 +188,7 @@ class Ui_ventana(QMainWindow):
                 self.Limpiar(labelConImagen, labelMostrarImagen, imagen, nombre, posicionInternaX)
             else:
                 self.Mostrar(self.labelMapa, imagen, nombre)
-
+        '''
 
 # ====================== CLASE visorImagenes =======================
 
